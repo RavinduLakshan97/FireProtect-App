@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "60083525620",
+    "firebase_url": "https://fireproject-e8bcb.firebaseio.com",
+    "project_id": "fireproject-e8bcb",
+    "storage_bucket": "fireproject-e8bcb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60083525620:android:ddf2cc49181960aa254ba1",
+        "android_client_info": {
+          "package_name": "com.ravindu.location_detecting_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60083525620-e7n3blbb0icc3m8rreb1jcs60vo51rtg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlMlx63mP_5helyryNBflXzajNREWuHI4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60083525620-e7n3blbb0icc3m8rreb1jcs60vo51rtg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
