@@ -53,6 +53,7 @@ class _LoginPageState extends State<LoginPage> {
         if (emailinput.isEmpty) {
           return 'Please enter an email';
         }
+        return null;
       },
       decoration: InputDecoration(labelText: 'Email Address'),
     );
@@ -65,6 +66,7 @@ class _LoginPageState extends State<LoginPage> {
         if (passwordInput.isEmpty) {
           return 'please enter a password';
         }
+        return null;
       },
       decoration: InputDecoration(
         labelText: 'Password',
@@ -76,7 +78,8 @@ class _LoginPageState extends State<LoginPage> {
                   _eyeButtonColor = Theme
                       .of(context)
                       .primaryColor;
-                });
+                }
+                );
               }else{
                 setState(() {
                   _isObsecured = true;

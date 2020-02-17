@@ -27,14 +27,27 @@ class _HomeState extends State<Home>{
           _isObsecured = false;
 
         });
-      }else{
-        setState(() {
-          _isObsecured = true;
-        });
-      }    });
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
+      }
+    });
+    
+    return MaterialApp(
+      home: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Home'),
+            bottom: TabBar(tabs: <Widget>[
+              Tab(icon: Icon(Icons.notifications),),
+              Tab(icon: Icon(Icons.location_on),),
+            ]),
+          ),
+          body: TabBarView(
+            children: <Widget>[
+              Text('Notification Tab View'),
+              Text('Location Tab View'),
+            ],
+          ),
+        ),
       ),
     );
   }
