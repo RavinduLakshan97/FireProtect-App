@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Text(
-        'FireProject',
+        'FireProtect',
         style: TextStyle(fontSize: 42.0,
         color: Colors.blue,
         ),
