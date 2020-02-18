@@ -31,6 +31,7 @@ class _HomeState extends State<Home>{
     });
     
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -43,7 +44,7 @@ class _HomeState extends State<Home>{
           ),
           body: TabBarView(
             children: <Widget>[
-              Text('Notification Tab View'),
+              Text('Notification Tab View',),
               Text('Location Tab View'),
             ],
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:location_detecting_app/UI/LandingPage.dart';
+import 'package:location_detecting_app/UI/Components/CircularProgress.dart';
 import 'dart:io';
 
 class LoginPage extends StatefulWidget {
@@ -14,6 +15,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+  final GlobalKey<State> _keyLoader = new GlobalKey<State>();
   String _email;
   String _password;
   bool _isObsecured = true;
@@ -169,7 +171,8 @@ class _LoginPageState extends State<LoginPage> {
       formState.save();
       try{
           await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
+          Dialogs.showLoadingDialog(context, _keyLoader);//invoking login
+          await Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
       }catch(e){
           print(e.message);
       }
@@ -177,3 +180,4 @@ class _LoginPageState extends State<LoginPage> {
   }
 
 }
+
