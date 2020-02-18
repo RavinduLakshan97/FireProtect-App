@@ -171,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
       formState.save();
       try{
           await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
-          Dialogs.showLoadingDialog(context, _keyLoader);//invoking login
+//          await Dialogs.showLoadingDialog(context, _keyLoader);//invoking login
           await Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
       }catch(e){
           print(e.message);
