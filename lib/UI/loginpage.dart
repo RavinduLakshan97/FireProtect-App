@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:location_detecting_app/UI/Home_Page/home_page_view.dart';
 import 'package:location_detecting_app/UI/LandingPage.dart';
 import 'package:location_detecting_app/UI/Components/CircularProgress.dart';
 import 'dart:io';
@@ -172,7 +173,7 @@ class _LoginPageState extends State<LoginPage> {
       try{
           await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
 //          await Dialogs.showLoadingDialog(context, _keyLoader);//invoking login
-          await Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
+          await Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
       }catch(e){
           print(e.message);
       }
