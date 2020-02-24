@@ -18,6 +18,10 @@ class _NotifyListState extends State<NotificationPageView> {
 
   @override
   Widget build(BuildContext context) {
+
+    final bloc=BlocProvider.of<FireProtectAppBloc>(context);
+
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Notifications",

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart' hide Notification;
 import 'package:flutter/services.dart';
 //import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:location_detecting_app/Model/notification.dart';
+import 'package:location_detecting_app/Util/constants.dart';
 //import 'package:path_to_nibbana/ui/components/custom_snack_bar.dart';
 //import 'package:path_to_nibbana/util/custom_themes.dart';
 //import 'package:path_to_nibbana/util/formatter.dart';
@@ -20,7 +21,7 @@ class NotificationCard extends StatelessWidget {
 //    final customSnackBar = CustomSnackBar(scaffoldState: Scaffold.of(context));
 //    final dateStr = Formatter.getDateTime(notification.timeStamp);
     return Container(
-//      decoration: Constants.getCardBoxDecoration(Colors.white),
+      decoration: Constants.getCardBoxDecoration(Colors.white),
       margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: GestureDetector(
 //        onTap: (),
@@ -40,12 +41,6 @@ class NotificationCard extends StatelessWidget {
               SizedBox(
                 height: 10.0,
               ),
-//              HtmlWidget(
-//                Formatter.formatHTML(notification.description),
-//                textStyle: TextStyle(fontSize: 17.0, color: Colors.black),
-//                bodyPadding: EdgeInsets.zero,
-//                enableCaching: false,
-//              ),
 //              Text(
 //                notification.user,
 //                style: TextStyle(fontSize: 17.0, color: Colors.black),

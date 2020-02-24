@@ -18,7 +18,9 @@ class Dialogs {
                   children: <Widget>[
                     Center(
                       child: Column(children: [
-                        CircularProgressIndicator(),
+                        CircularProgressIndicator(
+
+                        ),
                         SizedBox(height: 10,),
                         Text("Please Wait....",style: TextStyle(color: Colors.blueAccent),)
                       ]),

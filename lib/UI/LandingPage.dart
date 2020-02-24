@@ -25,32 +25,33 @@
 //      if (_isObsecured) {
 //        setState(() {
 //          _isObsecured = false;
-//
 //        });
 //      }
 //    });
-//
-//    return MaterialApp(
-//      debugShowCheckedModeBanner: false,
-//      home: DefaultTabController(
-//        length: 2,
-//        child: Scaffold(
-//          appBar: AppBar(
-//            title: Text('Home'),
-//            bottom: TabBar(tabs: <Widget>[
-//              Tab(icon: Icon(Icons.notifications),),
-//              Tab(icon: Icon(Icons.location_on),),
-//            ]),
-//          ),
-//          body: TabBarView(
-//            children: <Widget>[
-//              Text('Notification Tab View',),
-//              Text('Location Tab View'),
-//            ],
-//          ),
-//        ),
-//      ),
-//    );
+////
+////    return MaterialApp(
+////      debugShowCheckedModeBanner: false,
+////      home: DefaultTabController(
+////        length: 2,
+////        child: Scaffold(
+////          appBar: AppBar(
+////            title: Text('Home'),
+////            bottom: TabBar(tabs: <Widget>[
+////              Tab(icon: Icon(Icons.notifications),),
+////              Tab(icon: Icon(Icons.location_on),),
+////            ]),
+////          ),
+////          body: TabBarView(
+////            children: <Widget>[
+////              Text('Notification Tab View',),
+////              Text('Location Tab View'),
+////            ],
+////          ),
+////        ),
+////      ),
+////    );
+////  }
+////
+////}
 //  }
-//
 //}

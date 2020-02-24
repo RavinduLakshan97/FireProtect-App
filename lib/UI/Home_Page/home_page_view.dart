@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:location_detecting_app/Notification/firebaseNotification.dart';
+import 'package:location_detecting_app/UI/Fire_Protect_App_Bloc.dart';
 import 'package:location_detecting_app/UI/Map_Page/map_page_view.dart';
 import 'package:location_detecting_app/UI/Map_Page/map_page_bloc.dart';
 import 'package:location_detecting_app/UI/Notification_Page/notification_page_view.dart';
@@ -36,7 +37,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin<HomeP
     super.initState();
     firebaseNotification.firebaseCloudMessaging_Listeners();
     widgetOptions = [
-      NotificationPageView(),
+
+      BlocProvider<FireProtectAppBloc>(
+        create: (context) => FireProtectAppBloc(),
+        child: NotificationPageView(),
+      ),
+
       BlocProvider<MapPageBloc>(
         create: (context) => MapPageBloc(context: context),
         child: MapPageView(),
