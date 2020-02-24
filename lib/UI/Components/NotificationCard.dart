@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 //import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:location_detecting_app/Model/notification.dart';
 //import 'package:path_to_nibbana/ui/components/custom_snack_bar.dart';
-//import 'package:path_to_nibbana/util/constants.dart';
+//import 'package:path_to_nibbana/util/custom_themes.dart';
 //import 'package:path_to_nibbana/util/formatter.dart';
 
 class NotificationCard extends StatelessWidget {

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:location_detecting_app/Notification/firebaseNotification.dart';
 import 'package:location_detecting_app/UI/Map_Page/map_page_view.dart';
+import 'package:location_detecting_app/UI/Map_Page/map_page_bloc.dart';
 import 'package:location_detecting_app/UI/Notification_Page/notification_page_view.dart';
+import 'package:location_detecting_app/Util/custom_colors.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -25,13 +27,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin<HomeP
     firebaseNotification.firebaseCloudMessaging_Listeners();
     widgetOptions = [
       NotificationPageView(),
-      NotificationPageView(),
 
-//      MapPageView(),// Add Map View
-//      BlocProvider<MapPageBloc>(
-//        create: (context) => MapPageBloc(context: context),
-//        child: MapPageView(),
-//      ),
+      BlocProvider<MapPageBloc>(
+        create: (context) => MapPageBloc(context: context),
+        child: MapPageView(),
+      ),
     ];
     controller = TabController(length: 2, vsync: this, initialIndex: 0);
     controller.addListener(() {
@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin<HomeP
           border: Border(
             top: BorderSide(
               width: 1,
-              color: Colors.lightGreenAccent,
+              color: CustomColors.darker(CustomColors.TAB_BAR_BACKGROUND_COLOR),
             ),
           ),
         ),
