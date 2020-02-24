@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:location_detecting_app/UI/Components/NotificationCard.dart';
 import 'package:location_detecting_app/UI/Fire_Protect_App_Model.dart';
 import 'package:location_detecting_app/UI/Fire_Protect_App_Bloc.dart';
+import 'package:location_detecting_app/Util/custom_colors.dart';
 
 class NotificationPageView extends StatefulWidget {
   @override
@@ -22,7 +23,7 @@ class _NotifyListState extends State<NotificationPageView> {
         title: Text("Notifications",
             textAlign: TextAlign.start,
             style: TextStyle(fontSize: 25.0, color: Colors.black, fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.grey[100],
+        backgroundColor: CustomColors.APP_BAR_COLOR,
         elevation: 0,
       ),
       backgroundColor: Colors.grey[100],
@@ -35,8 +36,7 @@ class _NotifyListState extends State<NotificationPageView> {
                   .map((note) => NotificationCard(
                 notification: note,
               )
-              )
-                  .toList(growable: false),
+              ).toList(growable: false),
             );
           },
         ),
@@ -44,5 +44,20 @@ class _NotifyListState extends State<NotificationPageView> {
     );
   }
 
+  @override
+  void initState() {
+    super.initState();
+    controller.addListener(() => [
+      controller.position.maxScrollExtent,
+      controller.position.minScrollExtent,
+      (controller.position.maxScrollExtent + controller.position.minScrollExtent) / 2
+    ].contains(controller.offset));
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
 }

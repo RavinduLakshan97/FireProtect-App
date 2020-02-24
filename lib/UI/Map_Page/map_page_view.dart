@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:location_detecting_app/Util/custom_colors.dart';
 import 'package:fcode_bloc/fcode_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:location_detecting_app/UI/Map_Page/map_page_bloc.dart';
@@ -18,7 +19,7 @@ class MapPageView extends StatelessWidget {
       title: Text("Map",
           textAlign: TextAlign.start,
           style: TextStyle(fontSize: 25.0, color: Colors.black, fontWeight: FontWeight.bold)),
-      backgroundColor: Colors.grey[100],
+      backgroundColor: CustomColors.APP_BAR_COLOR,
       elevation: 0,
     ),
     body: Container(

@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin<HomeP
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: Colors.lightBlue,
+          color: CustomColors.TAB_BAR_BACKGROUND_COLOR,
           border: Border(
             top: BorderSide(
               width: 1,

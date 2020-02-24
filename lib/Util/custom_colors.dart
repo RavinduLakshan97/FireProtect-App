@@ -13,9 +13,10 @@ abstract class CustomColors{
   static const TITLE_COLOR = PRIMARY_TEXT_COLOR;
 
   // Tab Bar
-  static const TAB_BAR_BACKGROUND_COLOR = Color(0xFFEFEFEF);
+  static const TAB_BAR_BACKGROUND_COLOR = Colors.blueGrey;
   static const TAB_UNSELECTED_COLOR = Color(0xFF9A9A9A);
   static const TAB_SELECTED_COLOR = Colors.amberAccent;
+  static const APP_BAR_COLOR = Colors.blueGrey;
 
   static Color darker(Color c) {
     return change(c, 0.8);
