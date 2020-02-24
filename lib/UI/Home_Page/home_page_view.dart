@@ -1,4 +1,5 @@
 import 'package:fcode_bloc/fcode_bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:location_detecting_app/Notification/firebaseNotification.dart';
@@ -9,14 +10,23 @@ import 'package:location_detecting_app/Util/custom_colors.dart';
 
 class HomePage extends StatefulWidget {
 
+  const HomePage({
+    Key key,
+    this.user
+  }) : super(key: key);
+  final FirebaseUser user;
+
   @override
-  State<StatefulWidget> createState() => _HomePageState();
+//  State<StatefulWidget> createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin<HomePage> {
   static final log = Log("HomePageView");
   final firebaseNotification = new FirebaseNotification();
   final tabNames = ["notifications", "map"];
+  bool _isObsecured = true;
+
 
   List<Widget> widgetOptions = [];
   TabController controller;
@@ -27,7 +37,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin<HomeP
     firebaseNotification.firebaseCloudMessaging_Listeners();
     widgetOptions = [
       NotificationPageView(),
-
       BlocProvider<MapPageBloc>(
         create: (context) => MapPageBloc(context: context),
         child: MapPageView(),
@@ -48,6 +57,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin<HomeP
 
   @override
   Widget build(BuildContext context) {
+
+    setState(() {
+      if (_isObsecured) {
+        setState(() {
+          _isObsecured = false;
+        });
+      }
+    });
+
     final notificationTab = Tab(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
