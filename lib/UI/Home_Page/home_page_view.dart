@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin<HomeP
 
       BlocProvider<MapPageBloc>(
         create: (context) => MapPageBloc(context: context),
-        child: MapPageView(),
+        child: MapPage(),
       ),
     ];
     controller = TabController(length: 2, vsync: this, initialIndex: 0);
