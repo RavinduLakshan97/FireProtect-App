@@ -8,44 +8,43 @@ import 'package:location_detecting_app/UI/Components/NotificationCard.dart';
 import 'package:location_detecting_app/UI/Fire_Protect_App_Model.dart';
 import 'package:location_detecting_app/UI/Fire_Protect_App_Bloc.dart';
 
+import 'map_contain.dart';
+
 class MapPage extends StatefulWidget {
   @override
   _mapPageState createState() => _mapPageState();
 }
 
 class _mapPageState extends State<MapPage> {
-
-  GoogleMapController myController;
+//  GoogleMapController myController;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Map",textAlign: TextAlign.start,style: TextStyle(fontSize: 25.0,color: Colors.black,fontWeight: FontWeight.bold)),
+        title: Text("Map",
+            textAlign: TextAlign.start,
+            style: TextStyle(fontSize: 25.0, color: Colors.black, fontWeight: FontWeight.bold)),
         backgroundColor: CustomColors.APP_BAR_COLOR,
         elevation: 0,
       ),
-      body: Column(
-        children: <Widget>[
-          Container(
-            height: MediaQuery.of(context).size.height-134.0,
-            width: MediaQuery.of(context).size.width,
-            child: GoogleMap(
-              compassEnabled: true,
-              onMapCreated: (controller){
-                setState(() {
-                  myController = controller;
-                });
-              },
-              initialCameraPosition: CameraPosition(target: LatLng(7.8731, -80.7718)),
-            ),
+      body:Center(
+        child: Container(
+          width: 200.0,
+          height: 100.0,
+          child: FlatButton(
+
+            color: Colors.blue,
+            child: Text("Go To Map",style: TextStyle(fontSize: 25.0,color: Colors.white),),
+              onPressed:(){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context)=>MapContainer())
+                );
+              }
           ),
-          SizedBox(height: 5.0,),
-//          FlatButton(
-//              child: Text("Marker",style: TextStyle(color: Colors.lightBlue)),
-//          )
-        ],
-      ),
+        ),
+      )
     );
+    
   }
 }
