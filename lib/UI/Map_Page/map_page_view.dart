@@ -28,8 +28,8 @@ class _mapPageState extends State<MapPage> {
       body: Column(
         children: <Widget>[
           Container(
-            height: 475.0,
-            width: double.infinity,
+            height: MediaQuery.of(context).size.height-134.0,
+            width: MediaQuery.of(context).size.width,
             child: GoogleMap(
               compassEnabled: true,
               onMapCreated: (controller){
@@ -39,7 +39,11 @@ class _mapPageState extends State<MapPage> {
               },
               initialCameraPosition: CameraPosition(target: LatLng(7.8731, -80.7718)),
             ),
-          )
+          ),
+          SizedBox(height: 5.0,),
+//          FlatButton(
+//              child: Text("Marker",style: TextStyle(color: Colors.lightBlue)),
+//          )
         ],
       ),
     );
