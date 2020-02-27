@@ -41,15 +41,13 @@ class _mapContainPageState extends State<MapContainer> {
     });
   }
 
-  initMarker(clients){
+  initMarker(clients) {
     mapController.clearMarkers().then((val) {
-      mapController.addMarker(
-        MarkerOptions(
-          position: LatLng(clients['location'].latitude , clients['location'].longitude),
-          draggable: false,
-          infoWindowText: InfoWindowText(clients['name'],""),
-        )
-      );
+      mapController.addMarker(MarkerOptions(
+        position: LatLng(clients['location'].latitude, clients['location'].longitude),
+        draggable: false,
+        infoWindowText: InfoWindowText(clients['name'], ""),
+      ));
     });
   }
 
@@ -70,11 +68,14 @@ class _mapContainPageState extends State<MapContainer> {
               width: MediaQuery.of(context).size.width,
               child: mapToggle
                   ? GoogleMap(
-//                      compassEnabled: true,
                       onMapCreated: onMapCreated,
-//                      initialCameraPosition: CameraPosition(
-//                          target: LatLng(currentLocation.latitude, currentLocation.longitude), zoom: 7.0),
-
+                      options: GoogleMapOptions(
+                          compassEnabled: true,
+                          myLocationEnabled: true,
+                          mapType: MapType.hybrid,
+                          cameraPosition: (CameraPosition(target: LatLng(7.8731, 80.7718), zoom: 7.0)),
+                          rotateGesturesEnabled: true,
+                          trackCameraPosition: true),
                     )
                   : Center(
                       child: Text(
