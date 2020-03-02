@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:location_detecting_app/UI/Home_Page/home_page_view.dart';
 import 'package:location_detecting_app/UI/LandingPage.dart';
-//import 'package:location_detecting_app/UI/Components/CircularProgress.dart';
 import 'dart:io';
 
 class LoginPage extends StatefulWidget {
@@ -182,4 +181,3 @@ class _LoginPageState extends State<LoginPage> {
   }
 
 }
-

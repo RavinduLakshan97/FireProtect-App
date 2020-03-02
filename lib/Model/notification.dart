@@ -3,14 +3,17 @@ import 'package:fcode_bloc/fcode_bloc.dart';
 
 class Notification extends DBModel{
 
-  String title;
-  GeoPoint cordinate;
 
-  Notification({DocumentReference ref, this.title,this.cordinate}):super(ref:ref);
+  Timestamp timeStamp;
+  String deviceName;
+  String geoPoint;
+  String temperature;
+
+  Notification({DocumentReference ref, this.timeStamp,this.deviceName,this.geoPoint,this.temperature}):super(ref:ref);
 
   @override
   Notification clone() {
-    return Notification(title: title, cordinate: cordinate);
+    return Notification(timeStamp: timeStamp,deviceName: deviceName, geoPoint: geoPoint,temperature: temperature);
   }
 
 }

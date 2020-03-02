@@ -7,6 +7,7 @@ import 'package:location_detecting_app/UI/Fire_Protect_App_Bloc.dart';
 import 'package:location_detecting_app/Util/custom_colors.dart';
 
 class NotificationPageView extends StatefulWidget {
+
   @override
   _NotifyListState createState() => _NotifyListState();
 }
@@ -18,10 +19,6 @@ class _NotifyListState extends State<NotificationPageView> {
 
   @override
   Widget build(BuildContext context) {
-
-    final bloc=BlocProvider.of<FireProtectAppBloc>(context);
-
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Notifications",

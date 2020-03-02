@@ -11,7 +11,6 @@ class LoadNotificationAction implements FireProtectAppAction {}
 
 class NotificationChangedAction implements FireProtectAppAction {
   final List<Notification> notifications;
-
   NotificationChangedAction(this.notifications);
 }
 

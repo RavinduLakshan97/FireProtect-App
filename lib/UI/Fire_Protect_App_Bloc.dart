@@ -39,7 +39,7 @@ class FireProtectAppBloc extends Bloc<FireProtectAppAction, FireProtectAppModel>
       case NotificationChangedAction:
         final _state = state.clone();
         _state.notificationlist = (action as NotificationChangedAction).notifications;
-        _state.notificationlist.sort((list1, list2) => list2.title.compareTo(list1.title));
+        _state.notificationlist.sort((list1, list2) => list2.deviceName.compareTo(list1.deviceName));
         yield _state;
         break;
     }

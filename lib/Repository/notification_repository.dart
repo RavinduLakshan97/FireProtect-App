@@ -13,8 +13,11 @@ class NotificationRepository extends FirebaseRepository<Notification> {
     if (data == null) return null;
     return Notification(
         ref: snapshot.reference,
-        title: data['title'] ?? "",
-        cordinate: data['cordinate'] ?? "");
+        timeStamp: data['timeStamp'] != null ? data['timeStamp'] : Timestamp.now(),
+        deviceName: data['deviceName'] ?? "",
+        geoPoint: data['geoPoint'] ?? "",
+        temperature:data['temperature'] ?? "",
+    );
   }
 
   @override
