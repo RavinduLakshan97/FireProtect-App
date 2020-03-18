@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:location_detecting_app/UI/Home_Page/home_page_view.dart';
-import 'package:location_detecting_app/UI/LandingPage.dart';
-import 'dart:io';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_database/firebase_database.dart';
+
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title}) : super(key: key);
@@ -14,6 +15,42 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  FirebaseMessaging firebaseMessaging = new FirebaseMessaging();
+
+  void initState() {
+    firebaseMessaging.configure(onLaunch: (Map<String, dynamic> msg) {
+      print("onLaunch Called");
+    }, onResume: (Map<String, dynamic> msg) {
+      print("onResume Called");
+    }, onMessage: (Map<String, dynamic> msg) {
+      print("onMessage Called");
+    });
+    firebaseMessaging.requestNotificationPermissions(
+      const IosNotificationSettings(
+        sound: true,
+        alert: true,
+        badge: true,
+      )
+    );
+    firebaseMessaging.onIosSettingsRegistered.listen((IosNotificationSettings settings){
+      print("IOS Settings Registered");
+    }
+    );
+    firebaseMessaging.getToken().then((token){
+      update(token);
+    });
+  }
+
+  update(String token){
+//    print(token);
+//    textValue=token;
+  DatabaseReference databaseReference = new FirebaseDatabase().reference();
+  databaseReference.child('fcm-token/${token}').set({"token" : token});
+    setState(() {
+
+    });
+  }
+
   final _formKey = GlobalKey<FormState>();
   final GlobalKey<State> _keyLoader = new GlobalKey<State>();
   String _email;
@@ -26,12 +63,12 @@ class _LoginPageState extends State<LoginPage> {
       padding: const EdgeInsets.all(8.0),
       child: Text(
         'FireProtect',
-        style: TextStyle(fontSize: 42.0,
-        color: Colors.blue,
+        style: TextStyle(
+          fontSize: 42.0,
+          color: Colors.blue,
         ),
       ),
     );
-
   }
 
   Padding buildTitleLine() {
@@ -77,12 +114,9 @@ class _LoginPageState extends State<LoginPage> {
               if (_isObsecured) {
                 setState(() {
                   _isObsecured = false;
-                  _eyeButtonColor = Theme
-                      .of(context)
-                      .primaryColor;
-                }
-                );
-              }else{
+                  _eyeButtonColor = Theme.of(context).primaryColor;
+                });
+              } else {
                 setState(() {
                   _isObsecured = true;
                   _eyeButtonColor = Colors.grey;
@@ -103,8 +137,10 @@ class _LoginPageState extends State<LoginPage> {
       padding: const EdgeInsets.only(top: 10.0),
       child: Align(
         alignment: Alignment.centerRight,
-        child: Text('Forgot Password?', style: TextStyle(fontSize: 12.0, color: Colors.blueGrey),),
-
+        child: Text(
+          'Forgot Password?',
+          style: TextStyle(fontSize: 12.0, color: Colors.blueGrey),
+        ),
       ),
     );
   }
@@ -112,18 +148,21 @@ class _LoginPageState extends State<LoginPage> {
   Align buildLoginButton(BuildContext context) {
     return Align(
       child: SizedBox(
-        height:50.0,
+        height: 50.0,
         width: 270.0,
         child: FlatButton(
-          onPressed: (){
-            if(_formKey.currentState.validate()){
+          onPressed: () {
+            if (_formKey.currentState.validate()) {
               _formKey.currentState.save();
             }
             signIn();
           },
           color: Colors.green[700],
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-          child: Text('LOGIN',style: Theme.of(context).primaryTextTheme.button,),
+          child: Text(
+            'LOGIN',
+            style: Theme.of(context).primaryTextTheme.button,
+          ),
         ),
       ),
     );
@@ -164,20 +203,17 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-
-
-  Future <void> signIn() async {
+  Future<void> signIn() async {
     final formState = _formKey.currentState;
-    if(formState.validate()){
+    if (formState.validate()) {
       formState.save();
-      try{
-          await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
+      try {
+        await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
 //          await Dialogs.showLoadingDialog(context, _keyLoader);//invoking login
-          await Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
-      }catch(e){
-          print(e.message);
+        await Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+      } catch (e) {
+        print(e.message);
       }
     }
   }
-
 }
