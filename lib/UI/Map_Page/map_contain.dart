@@ -14,32 +14,32 @@ class _mapContainPageState extends State<MapContainer> {
 
   var currentLocation;
 
-  var clients = [];
+//  var clients = [];
 
   GoogleMapController mapController;
 
-  void initState() {
-    super.initState();
-    Geolocator().getCurrentPosition().then((currloc) {
-      setState(() {
-        currentLocation = currloc;
-        mapToggle = true;
-        populateClients();
-      });
-    });
-  }
+//  void initState() {
+//    super.initState();
+//    Geolocator().getCurrentPosition().then((currloc) {
+//      setState(() {
+//        currentLocation = currloc;
+//        mapToggle = true;
+////        populateClients();
+//      });
+//    });
+//  }
 
-  populateClients() {
-    clients = [];
-    Firestore.instance.collection('markers').getDocuments().then((docs) {
-      if (docs.documents.isNotEmpty) {
-        for (int i = 0; i < docs.documents.length; ++i) {
-          clients.add(docs.documents[i].data);
-          initMarker(docs.documents[i].data);
-        }
-      }
-    });
-  }
+//  populateClients() {
+//    clients = [];
+//    Firestore.instance.collection('markers').getDocuments().then((docs) {
+//      if (docs.documents.isNotEmpty) {
+//        for (int i = 0; i < docs.documents.length; ++i) {
+//          clients.add(docs.documents[i].data);
+//          initMarker(docs.documents[i].data);
+//        }
+//      }
+//    });
+//  }
 
   initMarker(clients) {
     mapController.clearMarkers().then((val) {
